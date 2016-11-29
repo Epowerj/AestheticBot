@@ -1,1 +1,2 @@
 help - Get help
+vapor - Vaporize your text

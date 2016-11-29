@@ -34,6 +34,10 @@ def inlinequery(bot, update):
     update.inline_query.answer(results)
 
 
+def vapor_command(bot, update):
+        bot.sendMessage(update.message.chat_id, text=vapor(commandtext = update.message.text.split(' ', 1)[1]))
+
+
 def error(bot, update, error):
         logger.warn('Update "%s" caused error "%s"' % (update, error))
 
@@ -51,6 +55,7 @@ def main():
 
         dp.add_handler(CommandHandler("start", start))
         dp.add_handler(CommandHandler("help", help))
+        dp.add_handler(CommandHandler("vapor", vapor))
 
         dp.add_handler(InlineQueryHandler(inlinequery))
 
