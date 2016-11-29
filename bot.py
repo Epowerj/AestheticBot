@@ -10,11 +10,11 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 def start(bot, update):
-        bot.sendMessage(update.message.chat_id, text='Welcome to dpastebot! Do /help for info')
+        bot.sendMessage(update.message.chat_id, text='Welcome to Aesrobot! Do /help for info')
 
 
 def help(bot, update):
-        bot.sendMessage(update.message.chat_id, text='Still in development')
+        bot.sendMessage(update.message.chat_id, text='Try using this bot inline!')
 
 
 def inlinequery(bot, update):
