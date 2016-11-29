@@ -1,7 +1,7 @@
 
 from telegram import InlineQueryResultArticle, ParseMode, InputTextMessageContent
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, InlineQueryHandler
-import logging, requests, os
+import logging, os, urlparse2
 from uuid import uuid4
 from key import apikey #get the key from key.py
 
