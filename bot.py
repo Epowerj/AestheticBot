@@ -24,7 +24,7 @@ def inlinequery(bot, update):
     results.append(InlineQueryResultArticle(id=uuid4(),
                                             title="Vapor",
                                             input_message_content=InputTextMessageContent(
-                                                    query.upper()
+                                                query.upper()
                                             )))
 
     update.inline_query.answer(results)
