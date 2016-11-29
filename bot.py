@@ -17,6 +17,10 @@ def help(bot, update):
         bot.sendMessage(update.message.chat_id, text='Try using this bot inline!')
 
 
+def vapor(text):
+        return " ".join(text.upper())
+
+
 def inlinequery(bot, update):
     query = update.inline_query.query
     results = list()
@@ -24,7 +28,7 @@ def inlinequery(bot, update):
     results.append(InlineQueryResultArticle(id=uuid4(),
                                             title="Vapor",
                                             input_message_content=InputTextMessageContent(
-                                                query.upper()
+                                                vapor(query)
                                             )))
 
     update.inline_query.answer(results)
