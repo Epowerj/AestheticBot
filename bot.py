@@ -18,7 +18,7 @@ def help(bot, update):
 
 
 def vapor(text):
-        return " ".join(text.upper())
+        return "`" + " ".join(text.upper()) + "`"
 
 
 def inlinequery(bot, update):
@@ -28,14 +28,15 @@ def inlinequery(bot, update):
     results.append(InlineQueryResultArticle(id=uuid4(),
                                             title="Vapor",
                                             input_message_content=InputTextMessageContent(
-                                                vapor(query)
+                                                vapor(query),
+                                                parse_mode=ParseMode.MARKDOWN
                                             )))
 
     update.inline_query.answer(results)
 
 
 def vapor_command(bot, update):
-        bot.sendMessage(update.message.chat_id, text=vapor(commandtext = update.message.text.split(' ', 1)[1]))
+        bot.sendMessage(update.message.chat_id, text=vapor(update.message.text.split(' ', 1)[1]), parse_mode=ParseMode.MARKDOWN)
 
 
 def error(bot, update, error):
