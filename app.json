@@ -1,0 +1,6 @@
+{
+  "name": "AestheticBot",
+  "description": "A Telegram bot to apply effects on text",
+  "repository": "https://github.com/Epowerj/AestheticBot",
+  "keywords": ["python", "telegram", "chat bot", "aesthetic" ]
+}
