@@ -21,6 +21,10 @@ def vapor(text):
         return "`" + " ".join(text.upper()) + "`"
 
 
+def vapor2(text):
+    return "`" + "  ".join(text.upper()) + "`"
+
+
 def inlinequery(bot, update):
     query = update.inline_query.query
     results = list()
@@ -32,11 +36,24 @@ def inlinequery(bot, update):
                                                 parse_mode=ParseMode.MARKDOWN
                                             )))
 
+    results.append(InlineQueryResultArticle(id=uuid4(),
+                                            title="Vapor x2",
+                                            input_message_content=InputTextMessageContent(
+                                                vapor2(query),
+                                                parse_mode=ParseMode.MARKDOWN
+                                            )))
+
     update.inline_query.answer(results)
 
 
 def vapor_command(bot, update):
-        bot.sendMessage(update.message.chat_id, text=vapor(update.message.text.split(' ', 1)[1]), parse_mode=ParseMode.MARKDOWN)
+        bot.sendMessage(update.message.chat_id, text=vapor(update.message.text.split(' ', 1)[1]),
+                        parse_mode=ParseMode.MARKDOWN)
+
+
+def vapor2_command(bot, update):
+    bot.sendMessage(update.message.chat_id, text=vapor2(update.message.text.split(' ', 1)[1]),
+                    parse_mode=ParseMode.MARKDOWN)
 
 
 def error(bot, update, error):
