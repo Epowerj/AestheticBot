@@ -10,7 +10,7 @@ def zalgo(text, intensity=50):
     zalgo_threshold = intensity
     zalgo_chars = [chr(i) for i in range(0x0300, 0x036F + 1)]
     zalgo_chars.extend([u'\u0488', u'\u0489'])
-    source = text.decode('utf8')
+    source = text.decode('utf-8')
     if not _is_narrow_build:
         source = _insert_randoms(source)
     zalgoized = []
@@ -20,7 +20,7 @@ def zalgo(text, intensity=50):
         for _ in range(zalgo_num):
             zalgoized.append(choice(zalgo_chars))
     response = choice(zalgo_chars).join(zalgoized)
-    return response.encode('utf8', 'ignore')
+    return response.encode('utf-8', 'ignore')
 
 
 def _insert_randoms(text):
