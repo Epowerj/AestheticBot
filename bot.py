@@ -3,6 +3,7 @@ from telegram import InlineQueryResultArticle, ParseMode, InputTextMessageConten
 from telegram.ext import Updater, CommandHandler, InlineQueryHandler
 import logging
 import os
+from zalgo import zalgo
 from uuid import uuid4
 from key import apikey  # get the key from key.py
 
@@ -45,6 +46,13 @@ def inlinequery(bot, update):
                                                 parse_mode=ParseMode.MARKDOWN
                                             )))
 
+    results.append(InlineQueryResultArticle(id=uuid4(),
+                                            title="Zalgo",
+                                            input_message_content=InputTextMessageContent(
+                                                zalgo(query),
+                                                parse_mode=ParseMode.MARKDOWN
+                                            )))
+
     update.inline_query.answer(results)
 
 
@@ -55,6 +63,11 @@ def vapor_command(bot, update):
 
 def vapor2_command(bot, update):
     bot.sendMessage(update.message.chat_id, text=vapor2(update.message.text.split(' ', 1)[1]),
+                    parse_mode=ParseMode.MARKDOWN)
+
+
+def zalgo_command(bot, update):
+    bot.sendMessage(update.message.chat_id, text=zalgo(update.message.text.split(' ', 1)[1]),
                     parse_mode=ParseMode.MARKDOWN)
 
 
