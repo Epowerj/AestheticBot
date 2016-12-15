@@ -28,6 +28,10 @@ def vapor2(text):
     return "`" + "  ".join(text.upper()) + "`"
 
 
+def quotes(text):
+    return "'''''''''" + text + "'''''''''"
+
+
 def inlinequery(bot, update):
     query = update.inline_query.query
     results = list()
@@ -53,6 +57,13 @@ def inlinequery(bot, update):
                                                 parse_mode=ParseMode.MARKDOWN
                                             )))
 
+    results.append(InlineQueryResultArticle(id=uuid4(),
+                                            title="Quotes",
+                                            input_message_content=InputTextMessageContent(
+                                                quotes(query),
+                                                parse_mode=ParseMode.MARKDOWN
+                                            )))
+
     update.inline_query.answer(results)
 
 
@@ -71,8 +82,13 @@ def zalgo_command(bot, update):
                     parse_mode=ParseMode.MARKDOWN)
 
 
+def quotes_command(bot, update):
+    bot.sendMessage(update.message.chat_id, text=quotes(update.message.text.split(' ', 1)[1]),
+                    parse_mode=ParseMode.MARKDOWN)
+
+
 def error(bot, update, error):
-        logger.warn('Update "%s" caused error "%s"' % (update, error))
+        logger.warning('Update "%s" caused error "%s"' % (update, error))
 
 
 def main():
@@ -87,6 +103,8 @@ def main():
         dp.add_handler(CommandHandler("start", start))
         dp.add_handler(CommandHandler("help", help))
         dp.add_handler(CommandHandler("vapor", vapor_command))
+        dp.add_handler(CommandHandler("zalgo", zalgo_command))
+        dp.add_handler(CommandHandler("quotes", quotes_command))
 
         dp.add_handler(InlineQueryHandler(inlinequery))
 

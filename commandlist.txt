@@ -1,2 +1,4 @@
 help - Get help
 vapor - Vaporize your text
+zalgo - Zalgonize your text
+quotes - Add quotes to your text
