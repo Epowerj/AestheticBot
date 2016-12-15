@@ -1,13 +1,15 @@
 
 from telegram import InlineQueryResultArticle, ParseMode, InputTextMessageContent
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, InlineQueryHandler
-import logging, os, urlparse2
+from telegram.ext import Updater, CommandHandler, InlineQueryHandler
+import logging
+import os
 from uuid import uuid4
-from key import apikey #get the key from key.py
+from key import apikey  # get the key from key.py
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
+
 
 def start(bot, update):
         bot.sendMessage(update.message.chat_id, text='Welcome to Aesrobot! Do /help for info')
@@ -66,9 +68,7 @@ def main():
         updater = Updater(TOKEN)
         dp = updater.dispatcher
         # add handlers
-        updater.start_webhook(listen="0.0.0.0",
-                      port=PORT,
-                      url_path=TOKEN)
+        updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
         updater.bot.setWebhook("https://" + str(os.environ.get("APPNAME")) + ".herokuapp.com/" + TOKEN)
 
         dp.add_handler(CommandHandler("start", start))
