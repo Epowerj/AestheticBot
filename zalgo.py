@@ -20,7 +20,8 @@ def zalgo(text, intensity=50):
         for _ in range(zalgo_num):
             zalgoized.append(choice(zalgo_chars))
     response = choice(zalgo_chars).join(zalgoized)
-    return response.encode('utf-8', 'ignore')
+    #return response.encode('utf-8', 'ignore')
+    return response
 
 
 def _insert_randoms(text):
