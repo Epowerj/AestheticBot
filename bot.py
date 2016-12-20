@@ -33,7 +33,7 @@ def quotes(text):
 
 
 def swishbang(text):
-    return ">>>>>" + text.upper()
+    return ">>>>>" + text.upper() + "!!!!"
 
 
 def inlinequery(bot, update):
