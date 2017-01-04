@@ -3,3 +3,4 @@ vapor - Vaporize your text
 zalgo - Zalgonize your text
 quotes - Add quotes to your text
 swishbang - Apply a swishbang
+caps - go all caps

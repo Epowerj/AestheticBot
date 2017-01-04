@@ -114,6 +114,11 @@ def swishbang_command(bot, update):
                     parse_mode=ParseMode.MARKDOWN)
 
 
+def caps_command(bot, update):
+    bot.sendMessage(update.message.chat_id, text=caps(update.message.text.split(' ', 1)[1]),
+                    parse_mode=ParseMode.MARKDOWN)
+
+
 def error(bot, update, error):
         logger.warning('Update "%s" caused error "%s"' % (update, error))
 
@@ -133,6 +138,7 @@ def main():
         dp.add_handler(CommandHandler("zalgo", zalgo_command))
         dp.add_handler(CommandHandler("quotes", quotes_command))
         dp.add_handler(CommandHandler("swishbang", swishbang_command))
+        dp.add_handler(CommandHandler("caps", caps_command))
 
         dp.add_handler(InlineQueryHandler(inlinequery))
 
