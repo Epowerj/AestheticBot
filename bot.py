@@ -36,6 +36,10 @@ def swishbang(text):
     return ">>>>>" + text.upper() + "!!!!"
 
 
+def caps(text):
+    return text.upper()
+
+
 def inlinequery(bot, update):
     query = update.inline_query.query
     results = list()
@@ -72,6 +76,13 @@ def inlinequery(bot, update):
                                             title="SwishBang",
                                             input_message_content=InputTextMessageContent(
                                                 swishbang(query),
+                                                parse_mode=ParseMode.MARKDOWN
+                                            )))
+
+    results.append(InlineQueryResultArticle(id=uuid4(),
+                                            title="Caps",
+                                            input_message_content=InputTextMessageContent(
+                                                caps(query),
                                                 parse_mode=ParseMode.MARKDOWN
                                             )))
 
