@@ -39,6 +39,9 @@ def swishbang(text):
 def caps(text):
     return text.upper()
 
+def lenny():
+    return "( ͡° ͜ʖ ͡°)"
+
 
 def inlinequery(bot, update):
     query = update.inline_query.query
@@ -83,6 +86,13 @@ def inlinequery(bot, update):
                                             title="Caps",
                                             input_message_content=InputTextMessageContent(
                                                 caps(query),
+                                                parse_mode=ParseMode.MARKDOWN
+                                            )))
+
+    results.append(InlineQueryResultArticle(id=uuid4(),
+                                            title="Le Lenny",
+                                            input_message_content=InputTextMessageContent(
+                                                lenny(),
                                                 parse_mode=ParseMode.MARKDOWN
                                             )))
 
