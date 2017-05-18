@@ -43,6 +43,18 @@ def lenny():
     return "( ͡° ͜ʖ ͡°)"
 
 
+def clap(text):
+    output = ""
+
+    for char in text:
+        if char == " ":
+            output += "👏"
+        else:
+            output += char.upper()
+
+    return output
+
+
 def inlinequery(bot, update):
     query = update.inline_query.query
     results = list()
@@ -86,6 +98,13 @@ def inlinequery(bot, update):
                                             title="Caps",
                                             input_message_content=InputTextMessageContent(
                                                 caps(query),
+                                                parse_mode=ParseMode.MARKDOWN
+                                            )))
+
+    results.append(InlineQueryResultArticle(id=uuid4(),
+                                            title="Clap",
+                                            input_message_content=InputTextMessageContent(
+                                                clap(query),
                                                 parse_mode=ParseMode.MARKDOWN
                                             )))
 
