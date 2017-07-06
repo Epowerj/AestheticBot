@@ -42,6 +42,9 @@ def caps(text):
 def lenny():
     return "( ͡° ͜ʖ ͡°)"
 
+def starry(text):
+    return "⋆ " + text + " ⋆"
+
 
 def clap(text):
     output = ""
@@ -105,6 +108,13 @@ def inlinequery(bot, update):
                                             title="Clap",
                                             input_message_content=InputTextMessageContent(
                                                 clap(query),
+                                                parse_mode=ParseMode.MARKDOWN
+                                            )))
+
+    results.append(InlineQueryResultArticle(id=uuid4(),
+                                            title="Starry",
+                                            input_message_content=InputTextMessageContent(
+                                                starry(query),
                                                 parse_mode=ParseMode.MARKDOWN
                                             )))
 
