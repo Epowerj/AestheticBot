@@ -45,6 +45,9 @@ def lenny():
 def starry(text):
     return "⋆ " + text + " ⋆"
 
+def thecorrect():
+    return "жыф"
+
 
 def clap(text):
     output = ""
@@ -120,8 +123,15 @@ def inlinequery(bot, update):
 
     results.append(InlineQueryResultArticle(id=uuid4(),
                                             title="Le Lenny",
-                                            input_message_content=InputTextMessageContent(
+                                                input_message_content=InputTextMessageContent(
                                                 lenny(),
+                                                parse_mode=ParseMode.MARKDOWN
+                                            )))
+
+    results.append(InlineQueryResultArticle(id=uuid4(),
+                                            title="say gif correctly",
+                                            input_message_content=InputTextMessageContent(
+                                                thecorrect(),
                                                 parse_mode=ParseMode.MARKDOWN
                                             )))
 
